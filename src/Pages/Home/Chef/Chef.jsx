@@ -19,7 +19,6 @@ const Chef = ({ c }) => {
       theme: "light",
     });
   };
-  console.log(c);
   const {
     id,
     chef_name,
