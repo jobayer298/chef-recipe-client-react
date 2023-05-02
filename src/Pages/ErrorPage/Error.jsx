@@ -6,7 +6,7 @@ const Error = () => {
       <div className="flex justify-center items-center h-screen">
         <div className='text-center'>
           <img
-            className="h-[250px] w-[250px] rounded-full shadow-2xl"
+            className="h-[250px] w-[250px] rounded-full shadow-xl border border-4 border-indigo-500"
             src={errorPic}
             alt=""
           />
