@@ -5,3 +5,13 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+.my-container{
+  @apply max-w-6xl mx-auto;
+}
+
+.active{
+  @apply text-[#7e90fe]
+}
+.default{
+  @apply text-white md:text-black
+}
