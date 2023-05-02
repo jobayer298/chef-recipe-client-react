@@ -12,7 +12,7 @@ const Error = () => {
           />
           <Link to="/">
             <button className="btn mt-5 border-0  text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-              Back to home
+              Back To Home
             </button>
           </Link>
         </div>
