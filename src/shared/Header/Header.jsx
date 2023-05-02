@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Header = () => {
+  const {user, logout} = useContext(AuthContext)
     const [open, setOpen] = useState(false);
     const link = [
       { name: "Home", href: "/" },
       { name: " Blogs", href: "/blogs" },
     ];
+    const handleLogout = () =>{
+      logout()
+        .then()
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     return (
       <div>
         <div className="bg-black md:bg-[#9873ff21] text-white md:text-black">
           <nav className=" px-5 md:px-0 max-w-6xl mx-auto md:flex lg:flex justify-between md:items-center py-3">
             <div className="logo">
               <Link to="/">
-                <h1 className="font-bold text-3xl text-green-500 ">The Green Elephant</h1>
+                <h1 className="font-bold text-3xl text-green-500 ">
+                  The Green Elephant
+                </h1>
               </Link>
             </div>
             <div
@@ -43,10 +54,16 @@ const Header = () => {
                 </NavLink>
               ))}
               <div className="md:flex gap-2">
-                <div className='mb-2'>
-                  <Link  to="/login">
-                    <button className="btn btn-bg text-white">Login</button>
-                  </Link>
+                <div className="mb-2">
+                  {user ? (
+                    <button onClick={handleLogout} className="btn btn-primary">
+                      Logout
+                    </button>
+                  ) : (
+                    <Link to="/login">
+                      <button className="btn btn-bg text-white">Login</button>
+                    </Link>
+                  )}
                 </div>
                 <div>
                   <Link to="/register">
