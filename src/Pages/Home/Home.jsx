@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from './Banner/Banner';
 import Chefs from './Chefs';
 import { useNavigation } from 'react-router-dom';
+import Spinner from '../../Spinner/Spinner';
 
 
 const Home = () => {

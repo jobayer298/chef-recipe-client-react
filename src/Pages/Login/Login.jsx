@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import github from "../../assets/github.png";
 import google from "../../assets/google-signin-button.png";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -8,7 +8,10 @@ import { toast } from "react-toastify";
 const Login = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const { login } = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/";
+  const { login, googleSignIn, githubSignIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
     setError("");
     setSuccess("");
@@ -22,6 +25,7 @@ const Login = () => {
         console.log(loggedUser);
         toast("Login Successful");
         setSuccess("Login Successful");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -30,15 +34,48 @@ const Login = () => {
     console.log( password, email);
   };
 
+  const handleGoogleLogin = () =>{
+    setError("");
+    setSuccess("");
+    googleSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast("Login Successful");
+        setSuccess("Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.message);
+      });
+  }
+  const handleGithubLogin = () =>{
+    setError("");
+    setSuccess("");
+    githubSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast("Login Successful");
+        setSuccess("Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.message);
+      });
+  }
+
   return (
     <div className="py-8">
       <form onSubmit={handleSubmit} className="hero   my-container">
         <div className="w-[480px] flex-col ">
           <h1 className="text-5xl mb-4 font-bold">Login now!</h1>
-          <button className="mb-0">
+          <button onClick={handleGoogleLogin} className="mb-0">
             <img className="w-[360px] h-[60px]" src={google} alt="" />
           </button>
-          <button className="m-0 p-0">
+          <button onClick={handleGithubLogin} className="m-0 p-0">
             <img className="w-[360px] " src={github} alt="" />
           </button>
 
