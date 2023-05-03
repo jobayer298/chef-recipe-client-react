@@ -53,6 +53,20 @@ const Header = () => {
                   <li className="my-3 md:my-0 ">{l.name}</li>
                 </NavLink>
               ))}
+              {user && (
+                <>
+                  <div
+                    className="tooltip tooltip-bottom"
+                    data-tip={user?.displayName}
+                  >
+                    <img
+                      className="  w-[40px] h-[40px] rounded-full "
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  </div>
+                </>
+              )}
               <div className="md:flex gap-2">
                 <div className="mb-2">
                   {user ? (

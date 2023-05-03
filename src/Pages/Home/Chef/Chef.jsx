@@ -37,6 +37,7 @@ const Chef = ({ c }) => {
           effect="blur"
           src={chef_photo}
           alt="chef"
+          placeholderSrc="/5223909.png"
         />
       </figure>
       <div className="card-body text-center">
