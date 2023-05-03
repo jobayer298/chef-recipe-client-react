@@ -3,6 +3,8 @@ import "./Chef.css";
 import { Link } from "react-router-dom";
 import { FaThumbsUp } from "react-icons/fa";
  import { toast } from "react-toastify";
+ import { LazyLoadImage } from "react-lazy-load-image-component";
+ import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Chef = ({ c }) => {
   const [buttonDisable, setButtonDisable] = useState(false);
@@ -30,10 +32,11 @@ const Chef = ({ c }) => {
   return (
     <div className="card chef-card  shadow-2xl my-2 p-4">
       <figure>
-        <img
+        <LazyLoadImage
           className="h-[200px] w-[200px] rounded-full"
+          effect="blur"
           src={chef_photo}
-          alt="recipe"
+          alt="chef"
         />
       </figure>
       <div className="card-body text-center">
