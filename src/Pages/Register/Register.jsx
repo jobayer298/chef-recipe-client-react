@@ -1,12 +1,17 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { getAuth, updateProfile } from "firebase/auth";
+import app from "../../firebase/firebase.config";
+
+const auth = getAuth(app)
 
 const Register = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const { createUser, logout , user} = useContext(AuthContext);
   const handleSubmit = (event) => {
     setError("");
     setSuccess("");
@@ -16,18 +21,35 @@ const Register = () => {
     const password = form.password.value;
     const email = form.email.value;
     const photo = form.photo.value;
+    if (password.length < 6) {
+      setError("Password must be greater than 6 character");
+      return
+    }
     createUser(email, password)
     .then(result =>{
         const loggedUser = result.user;
         console.log(loggedUser);
         toast("Registration Successful");
         setSuccess("Registration Successful")
+        logout()
+        navigate("/login")
     })
     .catch(err =>{
         console.log(err);
         setError(err.message);
     })
     console.log(name, password, email, photo);
+
+    updateProfile(auth.user, {
+      displayName: displayName,
+      photoURL: photoURL
+    })
+    .then(() =>{
+
+    })
+    .catch(error =>{
+      console.log(error);
+    })
   };
   return (
     <div className="py-8">
@@ -49,6 +71,7 @@ const Register = () => {
                   name="name"
                   placeholder="Name"
                   className="input input-bordered"
+                  
                   required
                 />
               </div>
@@ -61,6 +84,7 @@ const Register = () => {
                   name="photo"
                   placeholder="Photo URL"
                   className="input input-bordered"
+                  
                   required
                 />
               </div>

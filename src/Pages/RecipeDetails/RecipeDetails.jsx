@@ -17,6 +17,9 @@ const RecipeDetails = () => {
       likes,
       short_bio,
       recipe,
+      ingredients1,
+      ingredients2,
+      ingredients3
     } = details;
     const handleNavigate = () =>{
         navigate(-1)
@@ -48,6 +51,39 @@ const RecipeDetails = () => {
               <div className="bg-indigo-500 p-5 rounded-lg text-white h-[145px] ">
                 <p className="font-bold text-[18px]">Years of experience</p>
                 <p>{years_of_experience}+</p>
+              </div>
+            </div>
+            <div>
+              <h2 className="font-medium text-2xl my-3">Recipe made of: </h2>
+              <div className="grid grid-cols-3">
+                {recipe.map((r, index) => (
+                  <p className="underline" key={index}>
+                    {(index += 1)}. {r}
+                  </p>
+                ))}
+              </div>
+              <div className="grid grid-cols-3">
+                <div className="">
+                  {ingredients1.map((r, index) => (
+                    <p key={index}>
+                      {(index += 1)}. {r}
+                    </p>
+                  ))}
+                </div>
+                <div>
+                  {ingredients3.map((r, index) => (
+                    <p key={index}>
+                      {(index += 1)}. {r}
+                    </p>
+                  ))}
+                </div>
+                <div>
+                  {ingredients3.map((r, index) => (
+                    <p key={index}>
+                      {(index += 1)}. {r}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="card-actions mt-5 justify-center">

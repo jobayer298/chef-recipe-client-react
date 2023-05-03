@@ -55,6 +55,7 @@ const Header = () => {
               ))}
               {user && (
                 <>
+                  {/* <p>{user?.displayName}</p> */}
                   <div
                     className="tooltip tooltip-bottom"
                     data-tip={user?.displayName}

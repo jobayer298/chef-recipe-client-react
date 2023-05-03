@@ -1,11 +1,13 @@
 import React from "react";
 import { FaDownload } from "react-icons/fa";
-import ReactToPdf from "react-to-pdf";
+// import ReactToPdf from "react-to-pdf";
+import Pdf from "react-to-pdf";
+
 const Blogs = () => {
   const ref = React.createRef();
   return (
     <div className="my-container">
-      <ReactToPdf targetRef={ref} filename="Blogs.pdf">
+      <Pdf targetRef={ref} filename="code-example.pdf">
         {({ toPdf }) => (
           <button
             onClick={toPdf}
@@ -14,9 +16,9 @@ const Blogs = () => {
             <FaDownload></FaDownload>
           </button>
         )}
-      </ReactToPdf>
+      </Pdf>
       <div
-        style={{ width: "100%", height: "100%", padding: "30px" }}
+        style={{  padding: "30px" }}
         ref={ref}
         className="mt-2"
       >
@@ -56,15 +58,18 @@ const Blogs = () => {
           <p>
             ans: Node. js is detailed as "A platform built on Chrome's
             JavaScript runtime for easily building fast, scalable network
-            applications.Express is a  node. js web
-            application framework
+            applications.Express is a node. js web application framework
           </p>
         </div>
         <div className="my-4">
           <h3 className="font-bold text-2xl text-indigo-500">
             4. What is a custom hook, and why will you create a custom hook?
           </h3>
-          <p>ans: Custom hooks are some reusable function . It reduces the code and make cleaner. We use it cause we don't want to repeat same code in different file.</p>
+          <p>
+            ans: Custom hooks are some reusable function . It reduces the code
+            and make cleaner. We use it cause we don't want to repeat same code
+            in different file.
+          </p>
         </div>
       </div>
     </div>

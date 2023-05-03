@@ -4,14 +4,19 @@ import github from "../../assets/github.png";
 import google from "../../assets/google-signin-button.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { updateProfile, getAuth } from "firebase/auth";
+import app from "../../firebase/firebase.config";
 
+
+const auth = getAuth(app)
 const Login = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const location = useLocation()
   const navigate = useNavigate()
   const from = location.state?.from?.pathname || "/";
-  const { login, googleSignIn, githubSignIn } = useContext(AuthContext);
+  const { login, googleSignIn, githubSignIn } =
+    useContext(AuthContext);
   const handleSubmit = (event) => {
     setError("");
     setSuccess("");
@@ -32,6 +37,16 @@ const Login = () => {
         setError(err.message);
       });
     console.log( password, email);
+    // updateProfile(auth.user, {
+    //   displayName: {user.displayName}
+    // })
+    // .then(() =>{
+
+    // })
+    // .catch(error =>{
+    //   setError(error.message)
+    //   console.log(error);
+    // })
   };
 
   const handleGoogleLogin = () =>{
