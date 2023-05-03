@@ -75,15 +75,17 @@ const Header = () => {
                       Logout
                     </button>
                   ) : (
-                    <Link to="/login">
-                      <button className="btn btn-bg text-white">Login</button>
-                    </Link>
+                    <div>
+                      <Link to="/login">
+                        <button className="btn mr-2 btn-bg text-white">Login</button>
+                      </Link>
+                      <Link to="/register">
+                        <button className="btn btn-bg text-white">
+                          Register
+                        </button>
+                      </Link>
+                    </div>
                   )}
-                </div>
-                <div>
-                  <Link to="/register">
-                    <button className="btn btn-bg text-white">Register</button>
-                  </Link>
                 </div>
               </div>
             </ul>

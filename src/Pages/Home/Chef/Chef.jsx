@@ -7,20 +7,6 @@ import { FaThumbsUp } from "react-icons/fa";
  import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Chef = ({ c }) => {
-  const [buttonDisable, setButtonDisable] = useState(false);
-  const handleDisable = () => {
-    setButtonDisable(true);
-    toast("🦄 Added To Favorite!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
   const {
     id,
     chef_name,
@@ -56,13 +42,6 @@ const Chef = ({ c }) => {
           </div>
         </div>
         <div className="card-actions justify-center">
-          <button
-            disabled={buttonDisable}
-            onClick={handleDisable}
-            className="btn btn-wide border-0  text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-          >
-            Add To Favorite
-          </button>
           <Link to={`/details/${id}`}>
             <button className="btn btn-primary btn-wide border-0  text-white bg-red-500">
               View Recipes

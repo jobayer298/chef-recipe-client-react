@@ -17,10 +17,10 @@ const Register = () => {
     setSuccess("");
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
+    const displayName = form.displayName.value;
     const password = form.password.value;
     const email = form.email.value;
-    const photo = form.photo.value;
+    const photoURL = form.photoURL.value;
     if (password.length < 6) {
       setError("Password must be greater than 6 character");
       return
@@ -38,18 +38,18 @@ const Register = () => {
         console.log(err);
         setError(err.message);
     })
-    console.log(name, password, email, photo);
+    console.log( password, email);
 
     updateProfile(auth.user, {
       displayName: displayName,
-      photoURL: photoURL
+      photoURL: photoURL,
     })
-    .then(() =>{
-
-    })
-    .catch(error =>{
-      console.log(error);
-    })
+      .then((result) => {
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="py-8">
@@ -68,10 +68,9 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  name="name"
+                  name="displayName"
                   placeholder="Name"
                   className="input input-bordered"
-                  
                   required
                 />
               </div>
@@ -81,10 +80,9 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  name="photo"
+                  name="photoURL"
                   placeholder="Photo URL"
                   className="input input-bordered"
-                  
                   required
                 />
               </div>

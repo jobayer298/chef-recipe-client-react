@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import Spinner from '../../Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 const RecipeDetails = () => {
+  const [buttonDisable, setButtonDisable] = useState(false);
+  const handleDisable = () => {
+    setButtonDisable(true);
+    toast("🦄 Added To Favorite!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
     const navigation = useNavigation()
     if(navigation.state === 'loading'){
         return <Spinner></Spinner>
@@ -21,9 +36,6 @@ const RecipeDetails = () => {
       ingredients2,
       ingredients3
     } = details;
-    const handleNavigate = () =>{
-        navigate(-1)
-    }
     console.log(details);
     return (
       <div className="my-container my-12">
@@ -32,6 +44,15 @@ const RecipeDetails = () => {
             <img className="h-[450px]" src={chef_photo} />
           </figure>
           <div className="p-8">
+            <div className="flex justify-end">
+              <button
+                disabled={buttonDisable}
+                onClick={handleDisable}
+                className="btn border-0  text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+              >
+                Add To Favorite
+              </button>
+            </div>
             <h2 className="card-title font-bold text-2xl">{chef_name}</h2>
             <p className="my-5">{short_bio}</p>
             <div className="flex items-center gap-3">
@@ -55,10 +76,10 @@ const RecipeDetails = () => {
             </div>
             <div>
               <h2 className="font-medium text-2xl my-3">Recipe made of: </h2>
-              <div className="grid grid-cols-3">
+              <div className="grid grid-cols-3 font-medium">
                 {recipe.map((r, index) => (
                   <p className="underline" key={index}>
-                    {(index += 1)}. {r}
+                    {r}
                   </p>
                 ))}
               </div>
@@ -71,7 +92,7 @@ const RecipeDetails = () => {
                   ))}
                 </div>
                 <div>
-                  {ingredients3.map((r, index) => (
+                  {ingredients2.map((r, index) => (
                     <p key={index}>
                       {(index += 1)}. {r}
                     </p>
