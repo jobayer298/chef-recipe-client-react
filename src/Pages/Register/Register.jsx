@@ -31,8 +31,20 @@ const Register = () => {
         console.log(loggedUser);
         toast("Registration Successful");
         setSuccess("Registration Successful")
-        logout()
-        navigate("/login")
+        
+        updateProfile(auth.currentUser, {
+          displayName: displayName,
+          photoURL: photoURL,
+        })
+          .then(() => {
+            console.log("profile updated");
+            logout();
+            navigate("/login");
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+          
     })
     .catch(err =>{
         console.log(err);
@@ -40,16 +52,7 @@ const Register = () => {
     })
     console.log( password, email);
 
-    updateProfile(auth.user, {
-      displayName: displayName,
-      photoURL: photoURL,
-    })
-      .then((result) => {
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    
   };
   return (
     <div className="py-8">

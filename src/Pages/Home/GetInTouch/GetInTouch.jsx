@@ -7,7 +7,7 @@ const GetInTouch = () => {
     <div className=" py-24 mx-auto bg-gray-100">
       <h2 className="font-medium text-6xl mb-8 my-container">Get IN Touch</h2>
       <div className="md:flex justify-between items-center my-container ">
-        <form className="md:w-1/2">
+        <div className="md:w-1/2">
           <div className="form-group mb-6">
             <input
               type="text"
@@ -76,29 +76,16 @@ const GetInTouch = () => {
           </div>
           <div className="form-group form-check text-center mb-6"></div>
           <button
-            type="submit"
             className="
               w-full
               px-6
               py-4
-              bg-blue-600
-              text-white
-              font-medium
-              text-xs
-              leading-tight
-              uppercase
-              rounded
-              shadow-md
-              hover:bg-blue-700 hover:shadow-lg
-              focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-              active:bg-blue-800 active:shadow-lg
-              transition
-              duration-150
-              ease-in-out"
+              btn btn-primary
+              font-medium"
           >
             Send
           </button>
-        </form>
+        </div>
         <div>
             <Lottie animationData={bye} loop={true}></Lottie>
         </div>
