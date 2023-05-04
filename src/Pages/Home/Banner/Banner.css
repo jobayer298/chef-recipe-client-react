@@ -1,5 +1,13 @@
 .banner{
-    background-image: linear-gradient(#00000085, #06060680),url('../../../assets/tim-toomey-STqHLqMne3k-unsplash.jpg');
+    background-image: linear-gradient(#00000085, #06060680),url('../../../../public/slider1.jpg');
+    background-position:  center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+.banner2{
+    background-image: linear-gradient(#00000085, #06060680) url('../../../../public/slider3.jfif');
     background-position:  center;
     background-repeat: no-repeat;
     width: 100%;

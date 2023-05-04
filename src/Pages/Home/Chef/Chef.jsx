@@ -16,7 +16,9 @@ const Chef = ({ c }) => {
     likes,
   } = c;
   return (
-    <div className="card chef-card  shadow-2xl my-2 p-4">
+    <div
+      className="card chef-card  shadow-2xl my-2 p-4"
+    >
       <figure>
         <LazyLoadImage
           className="h-[200px] w-[200px] rounded-full"
