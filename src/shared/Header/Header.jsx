@@ -4,7 +4,6 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const Header = () => {
   const {user, logout} = useContext(AuthContext)
-    const [open, setOpen] = useState(false);
     const link = [
       { name: "Home", href: "/" },
       { name: " Blogs", href: "/blogs" },
@@ -17,31 +16,46 @@ const Header = () => {
         });
     }
     return (
-      <div>
-        <div className="bg-black md:bg-[#9873ff21] text-white md:text-black">
-          <nav className=" px-7 md:px-0 max-w-6xl mx-auto md:flex lg:flex justify-between md:items-center py-3">
-            <div className="logo">
-              <Link to="/">
-                <h1 className="font-bold text-3xl text-green-500 ">
-                  The Green Elephant
-                </h1>
-              </Link>
+      <div className='bg-gray-100 py-2'>
+        <div className="navbar my-container">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/blogs">Blog</Link>
+                </li>
+              </ul>
             </div>
-            <div
-              onClick={() => setOpen(!open)}
-              className="absolute md:hidden text-3xl right-6 top-6"
-            >
-              {open === false ? (
-                <ion-icon name="menu"></ion-icon>
-              ) : (
-                <ion-icon name="close"></ion-icon>
-              )}
-            </div>
-            <ul
-              className={`md:flex bg-black md:bg-[#F2EDFF] lg:bg-[#F2EDFF]  lg:flex gap-6 font-semibold lg:items-center absolute md:static lg:static md:z-auto z-[1] left-0 pl-9 md:pl-0 w-full md:w-auto  ${
-                open ? "top-20" : "top-[-490px]"
-              }`}
-            >
+            <Link to="/">
+              <h1 className="font-bold text-3xl text-green-500 hidden md:block ">
+                The Green Elephant
+              </h1>
+            </Link>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 md:flex gap-7">
               {link.map((l, index) => (
                 <NavLink
                   key={index}
@@ -50,9 +64,13 @@ const Header = () => {
                     isActive ? "active" : "default"
                   }
                 >
-                  <li className="my-3 md:my-0 ">{l.name}</li>
+                  <li className="my-3 md:my-0 font-bold ">{l.name}</li>
                 </NavLink>
               ))}
+            </ul>
+          </div>
+          <div className="navbar-end md:flex gap-6">
+            <div>
               {user && (
                 <>
                   {/* <p>{user?.displayName}</p> */}
@@ -68,28 +86,26 @@ const Header = () => {
                   </div>
                 </>
               )}
-              <div className="md:flex gap-2">
-                <div className="mb-2">
-                  {user ? (
-                    <button onClick={handleLogout} className="btn btn-primary">
-                      Logout
+            </div>
+            <div>
+              {user ? (
+                <button onClick={handleLogout} className="btn btn-primary">
+                  Logout
+                </button>
+              ) : (
+                <div>
+                  <Link to="/login">
+                    <button className="btn mr-2 btn-bg text-white">
+                      Login
                     </button>
-                  ) : (
-                    <div>
-                      <Link to="/login">
-                        <button className="btn mr-2 btn-bg text-white">Login</button>
-                      </Link>
-                      <Link to="/register">
-                        <button className="btn btn-bg text-white">
-                          Register
-                        </button>
-                      </Link>
-                    </div>
-                  )}
+                  </Link>
+                  <Link to="/register">
+                    <button className="btn btn-bg text-white">Register</button>
+                  </Link>
                 </div>
-              </div>
-            </ul>
-          </nav>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );
