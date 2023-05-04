@@ -39,7 +39,7 @@ const RecipeDetails = () => {
     console.log(details);
     return (
       <div className="my-container my-12">
-        <div className="card card-side bg-base-100 shadow-xl grid grid-cols-2">
+        <div className="card card-side bg-base-100 shadow-xl grid md:grid-cols-2">
           <figure>
             <img className="h-[450px]" src={chef_photo} />
           </figure>
