@@ -19,7 +19,7 @@ const Header = () => {
     return (
       <div>
         <div className="bg-black md:bg-[#9873ff21] text-white md:text-black">
-          <nav className=" px-5 md:px-0 max-w-6xl mx-auto md:flex lg:flex justify-between md:items-center py-3">
+          <nav className=" px-7 md:px-0 max-w-6xl mx-auto md:flex lg:flex justify-between md:items-center py-3">
             <div className="logo">
               <Link to="/">
                 <h1 className="font-bold text-3xl text-green-500 ">
@@ -57,7 +57,7 @@ const Header = () => {
                 <>
                   {/* <p>{user?.displayName}</p> */}
                   <div
-                    className="tooltip tooltip-bottom"
+                    className="tooltip tooltip-left"
                     data-tip={user?.displayName}
                   >
                     <img
