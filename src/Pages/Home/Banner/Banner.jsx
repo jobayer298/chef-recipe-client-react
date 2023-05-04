@@ -41,7 +41,7 @@ const Banner = () => {
             <button className="btn text-white bg-red-500 border-0">
               Explore More
             </button>
-          </div>
+          </div> 
         </div>
       </SwiperSlide>
       <SwiperSlide className="">
