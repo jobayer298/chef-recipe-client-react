@@ -29,11 +29,11 @@ const Banner = () => {
     >
       <SwiperSlide className="">
         <div className="banner flex justify-center items-center text-center">
-          <div>
-            <h2 className="text-5xl font-bold text-[#D54215] ">
+          <div className=" ">
+            <h2 className="text-3xl font-bold md:text-5xl  text-[#D54215] ">
               no matter how you cook, <br /> Yumma has many the <br /> recipes
             </h2>
-            <p className="font-medium text-[18px] text-gray-200 my-9">
+            <p className="font-medium md:text-[18px] text-gray-200 my-9">
               We’re all about plants and have been committed to sustainable
               organic farmers since <br /> Our entire menu is organic, gluten
               and wheat free with no refined sugars.
@@ -47,10 +47,10 @@ const Banner = () => {
       <SwiperSlide className="">
         <div className="banner flex justify-center items-center text-center">
           <div>
-            <h2 className="text-5xl font-bold text-[#D54215] ">
+            <h2 className="text-3xl font-bold md:text-5xl  text-[#D54215] ">
               no matter how you cook, <br /> Yumma has many the <br /> recipes
             </h2>
-            <p className="font-medium text-[18px] text-gray-200 my-9">
+            <p className="font-medium md:text-[18px] text-gray-200 my-9">
               We’re all about plants and have been committed to sustainable
               organic farmers since <br /> Our entire menu is organic, gluten
               and wheat free with no refined sugars.

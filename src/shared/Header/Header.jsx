@@ -93,7 +93,7 @@ const Header = () => {
                   Logout
                 </button>
               ) : (
-                <div>
+                <div className='flex'>
                   <Link to="/login">
                     <button className="btn mr-2 btn-bg text-white">
                       Login

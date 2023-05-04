@@ -6,7 +6,7 @@ const GetInTouch = () => {
   return (
     <div className=" py-12 mx-auto bg-gray-100">
       <h2 className="font-medium text-6xl mb-8 my-container">Get IN Touch</h2>
-      <div className="md:flex justify-between items-center my-container ">
+      <div className="md:flex justify-between items-center my-container px-4 md:px-0 ">
         <div data-aos="zoom-in" className="md:w-1/2">
           <div className="form-group mb-6">
             <input
